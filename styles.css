@@ -1,0 +1,39 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#container {
+  background-color: red;
+  width: calc(600px + 64px + 64px + 4rem);
+  height: fit-content
+}
+
+
+#grid-row {
+  display: flex;
+  justify-content: center;
+  
+  & #grid-container {
+    width: 600px;
+    height: 600px;
+    background-color: lightgray;
+  }
+}
+
+
+#knob-row {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  & #new-grid-button, 
+  #clear-button {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    border-width: 0px;
+    background-color: whitesmoke;
+  }
+}
