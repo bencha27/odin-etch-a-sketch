@@ -1,6 +1,7 @@
 body {
   display: flex;
   justify-content: center;
+  font-family: "Orbitron", sans-serif;
 }
 
 #container {
@@ -9,6 +10,12 @@ body {
   height: fit-content
 }
 
+h1 {
+  color: gold;
+  text-align: center;
+  font-size: 3rem;
+  padding: 1rem 0;
+}
 
 #grid-row {
   display: flex;
@@ -28,6 +35,11 @@ body {
   gap: 1rem;
   justify-content: space-between;
 
+  & button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
   & #new-grid-button, 
   #clear-button {
     width: 64px;
@@ -35,5 +47,61 @@ body {
     border-radius: 32px;
     border-width: 0px;
     background-color: whitesmoke;
+  }
+}
+
+#palette {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  
+  & button {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid whitesmoke;
+  }
+
+  & #black-button {
+    background-color: black;
+  }
+
+  & #gray-button {
+    background-color: gray;
+  }
+  & #white-button {
+    background-color: white;
+  }
+  & #red-button {
+    background-color: red;
+  }
+  & #orange-button {
+    background-color: darkorange;
+  }
+  & #yellow-button {
+    background-color: yellow;
+  }
+  & #yellow-green-button {
+    background-color: limegreen;
+  }
+  & #green-button {
+    background-color: green;
+  }
+  & #sky-blue-button {
+    background-color: deepskyblue;
+  }
+  & #blue-button {
+    background-color: blue;
+  }
+  & #purple-button {
+    background-color: purple;
+  }
+  & #pink-button {
+    background-color: lightpink;
+  }
+  & #brown-button {
+    background-color: saddlebrown;
+  }
+  & #tan-button {
+    background-color: peru;
   }
 }
