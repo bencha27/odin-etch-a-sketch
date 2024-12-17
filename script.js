@@ -1,3 +1,15 @@
+// On load
+function loadPage() {
+  createSquares(16);
+  const blackButtonElement = document.querySelector("#black-button");
+  blackButtonElement.className += "selected";
+}
+
+loadPage();
+
+
+
+
 // Create grid of specified size
 function createSquares(number) {
   const gridElement = document.querySelector("#grid-container");
@@ -21,9 +33,6 @@ function createSquares(number) {
     gridElement.appendChild(cloneRow);
   }
 }
-
-// Default grid
-createSquares(16);
 
 
 
@@ -50,4 +59,49 @@ function createNewGrid() {
 
 
 
-// 
+// Set color from palette
+let currentColor = "black";
+const paletteElement = document.querySelector("#palette");
+paletteElement.addEventListener("click", setCurrentColor)
+
+function setCurrentColor(event) {
+  const currentColorElement = event.target;
+  if (!currentColorElement.value) return;
+  
+  // Unselect previous color 
+  const previousColorElement = document.querySelector(".selected");
+  previousColorElement.classList.remove("selected");
+  
+  // Update current color
+  currentColorElement.className += "selected";
+  currentColor = currentColorElement.value;
+}
+
+
+
+
+// Set grid square color when clicked
+const gridElement = document.querySelector("#grid-container");
+gridElement.addEventListener("click", handleGridClick);
+
+function handleGridClick(event) {
+  event.target.style.backgroundColor = currentColor;
+  event.target.dataset.color = currentColor;
+}
+
+
+
+
+// Temporarily change grid square color while hovering
+gridElement.addEventListener("mouseover", handleGridMouseover);
+gridElement.addEventListener("mouseout", handleGridMouseout);
+
+function handleGridMouseover(event) {
+  event.target.style.backgroundColor = currentColor;
+}
+
+function handleGridMouseout(event) {
+  const squareElement = event.target;
+  const squareElementColor = squareElement.dataset.color;
+  squareElement.style.backgroundColor = squareElementColor || "white";
+}
