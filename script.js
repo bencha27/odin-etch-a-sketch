@@ -54,6 +54,11 @@ function handleNewGridButtonClick() {
   gridSectionElement.appendChild(newGridContainerElement);
 
   createSquares(input);
+
+  // Add event listeners to new grid
+  newGridContainerElement.addEventListener("click", handleGridClick);
+  newGridContainerElement.addEventListener("mouseover", handleGridMouseover);
+  newGridContainerElement.addEventListener("mouseout", handleGridMouseout);
 }
 
 
