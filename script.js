@@ -39,9 +39,9 @@ function createSquares(number) {
 
 // New grid button
 const newGridButtonElement = document.querySelector("#new-grid-button");
-newGridButtonElement.addEventListener("click", createNewGrid);
+newGridButtonElement.addEventListener("click", handleNewGridButtonClick);
 
-function createNewGrid() {
+function handleNewGridButtonClick() {
   const input = prompt("Enter grid size (number of squares per side). The maximum is 60.", 16);
   if (input > 60) input = 60;
   
@@ -62,9 +62,9 @@ function createNewGrid() {
 // Set color from palette
 let currentColor = "black";
 const paletteElement = document.querySelector("#palette");
-paletteElement.addEventListener("click", setCurrentColor)
+paletteElement.addEventListener("click", handlePaletteClick);
 
-function setCurrentColor(event) {
+function handlePaletteClick(event) {
   const currentColorElement = event.target;
   if (!currentColorElement.value) return;
   
@@ -104,4 +104,18 @@ function handleGridMouseout(event) {
   const squareElement = event.target;
   const squareElementColor = squareElement.dataset.color;
   squareElement.style.backgroundColor = squareElementColor || "white";
+}
+
+
+
+
+// Clear grid button
+const clearGridButtonElement = document.querySelector("#clear-button");
+clearGridButtonElement.addEventListener("click", handleClearGridButtonClick);
+
+function handleClearGridButtonClick(event) {
+  if (confirm("Are you sure you want to clear the grid? You cannot undo this action.")) {
+    const allSquareElements = document.querySelectorAll(".grid-square");
+    allSquareElements.forEach((square) => square.style.backgroundColor = "white");
+  }
 }
